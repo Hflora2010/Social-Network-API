@@ -18,8 +18,8 @@ connection.once("open", async () => {
 
   // Loop 20 times -- add users to the users array
   for (let i = 0; i < 20; i++) {
-    const username = getRandomName();
-    const email = username.replace(" ", "") + "@gmail.com";
+    const username = getRandomName().replace(" ", "").toLocaleLowerCase();
+    const email = username + "@gmail.com";
 
     const userThought = await Thought.create({
       thoughtText: getRandomThought(),

@@ -1,5 +1,7 @@
 const { User, Thought, Reaction } = require("../models");
 
+const moment = require("moment");
+
 module.exports = {
   //GET all thoughts
   async getThoughts(req, res) {
@@ -115,7 +117,7 @@ module.exports = {
       const reaction = await Reaction.create({
         reactionBody,
         username,
-        createdAt: new Date(),
+        createdAt: moment().format("MMMM Do YYYY, h:mm:ss a"),
       });
 
       //find thought by thoughtid and update reaction array to add new reaction
@@ -125,7 +127,7 @@ module.exports = {
         { runValidators: true, new: true }
       );
 
-      if (updatedThought) {
+      if (!updatedThought) {
         await Reaction.findByIdAndRemove(reaction._id);
         return res.status(404).json({ message: "Thought not found" });
       }
