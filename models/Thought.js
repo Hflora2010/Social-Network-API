@@ -12,7 +12,7 @@ const thoughtSchema = new Schema(
         },
         createdAt: {
             type: Date,
-            default: Date.now,
+            default: Date.now(),
         },
         username: {
             type: String,
@@ -20,7 +20,7 @@ const thoughtSchema = new Schema(
         },
         reactions: [reactionSchema],
     },
-    {
+        {
         toJSON: {
             virtuals: true,
         },
