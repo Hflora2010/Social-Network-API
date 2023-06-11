@@ -37,5 +37,38 @@ module.exports = {
        }
     },
 
-    
+    //CREATE new user
+    async createUser(req, res) {
+        try {
+            //destructuring properties
+            const { username, email } = req.body;
+            const user = await User.create({ username, email});
+
+            res.status(201).json({ user });
+        } catch (err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+    },
+
+    //UPDATE user
+    async updateUser(req, res) {
+        try {
+            const { userId } = req.params;
+            const updatedUser = await User.findOneAndUpdate(
+                { _id: userId },
+                { $set: req.body },
+                { new: true }
+            );
+
+          if(!updatedUser) {
+            return res.status(404).json({ message: "user not found"});
+          }
+
+          res.json(updatedUser);
+        } catch(err) {
+            console.log(err);
+            return res.status(500).json(err);
+        }
+    }
 }
