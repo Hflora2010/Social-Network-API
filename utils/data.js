@@ -1,4 +1,4 @@
-const users = [
+const names = [
     'Aaran',
     'Aaren',
     'Aarez',
@@ -96,7 +96,7 @@ const users = [
 
   //returns random full name
   const getRandomName = () =>
-  `${getRandomArrItem(users)} ${getRandomArrItem(users)}`;
+  `${getRandomArrItem(names)} ${getRandomArrItem(names)}`;
 
   //returns random thought
   const getRandomThought = () =>
