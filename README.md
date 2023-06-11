@@ -26,8 +26,12 @@ You can access the full video at the following link: <br>
 
 Code was built out with the help of:
 
-Uconn Tutor: Brandon Leek
-Studygroup Helpers: Matthew Caschetto and Kevin Molyneaux Frank Olmsted
-AskBSC Learning Assistants
+Uconn Tutor: Brandon Leek <br>
+Studygroup Helpers: Matthew Caschetto and Kevin Molyneaux Frank Olmsted <br>
+AskBSC Learning Assistants<br><br>
 
-References: UCONN Module 18-NoSQL.
+References: UCONN Module 18-NoSQL.<br>
+
+<a href="https://www.mongodb.com/docs/manual/reference/operator/update/addToSet/"> Add to Set </a><br>
+<a href="https://www.mongodb.com/docs/manual/reference/operator/update/pull/"> Pull </a><br>
+<a href="https://kb.objectrocket.com/mongo-db/how-to-use-mongoose-lean-926"> Lean </a>
