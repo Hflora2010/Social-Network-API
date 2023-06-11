@@ -111,19 +111,12 @@ module.exports = {
   //CREATE new reaction
   async createReaction(req, res) {
     try {
-      const { reactionBody, username } = req.body;
       const { thoughtId } = req.params;
-
-      const reaction = await Reaction.create({
-        reactionBody,
-        username,
-        createdAt: moment().format("MMMM Do YYYY, h:mm:ss a"),
-      });
 
       //find thought by thoughtid and update reaction array to add new reaction
       const updatedThought = await Thought.findOneAndUpdate(
         { _id: thoughtId },
-        { $addToSet: { reactions: reaction } }, //add new reaction to reactions array
+        { $addToSet: { reactions: req.body } }, //add new reaction to reactions array
         { runValidators: true, new: true }
       );
 
@@ -132,7 +125,7 @@ module.exports = {
         return res.status(404).json({ message: "Thought not found" });
       }
 
-      res.json(reaction);
+      res.json(updatedThought);
     } catch (err) {
       console.log(err);
       return res.status(500).json(err);
